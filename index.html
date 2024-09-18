@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebRTC Test</title>
+</head>
+
+<body>
+    <form id="connect">
+        <label for="deviceIP">Device IP:</label>
+        <input type="text" id="deviceIP" name="deviceIP">
+        <button type="submit">Connect</button>
+    </form>
+    <div>Socket Status: <label id="socketState">disconnected</label></div>
+    <div>Session ID: <label id="sessionId"></label></div>
+    <div>WebRTC Connection State: <label id="connectionState">disconnected</label></div>
+    
+    <button id="call">Call</button>
+    <br>
+    <!-- <audio id="audio"></audio> -->
+    <video id="video" autoplay playsinline controls></video>
+    
+    <div>
+        <button id="mute">Mute</button>
+        <button id="enableVideo">Enable Video</button>
+        <button id="stop">Hang Up</button>
+    </div>
+</body>
+<script src='scripts.js'></script>
+
+</html>
