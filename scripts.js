@@ -118,16 +118,14 @@ document.getElementById("call").addEventListener("click", async function () {
                 transceiver.setCodecPreferences([
                     {
                         // Chrome
-                        // channels: 2,
-                        // clockRate: 48000,
-                        // mimeType: 'audio/opus',
-                        // sdpFmtpLine: 'minptime=10;useinbandfec=1',
-
-                        //FireFox
                         channels: 2,
                         clockRate: 48000,
-                        mimeType: "audio/opus",
-                        sdpFmtpLine: "maxplaybackrate=48000;stereo=1;useinbandfec=1"
+                        mimeType: 'audio/opus',
+                        // Chrome
+                        sdpFmtpLine: 'minptime=10;useinbandfec=1',
+
+                        //FireFox
+                        // sdpFmtpLine: "maxplaybackrate=48000;stereo=1;useinbandfec=1"
                     },
                 ]);
             }
@@ -137,10 +135,10 @@ document.getElementById("call").addEventListener("click", async function () {
                         mimeType: 'video/H264',
                         clockRate: 90000,
                         // Chrome
-                        // sdpFmtpLine: 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=64001f',
+                        sdpFmtpLine: 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=64001f',
 
                         // Firefox
-                        sdpFmtpLine: "profile-level-id=42e01f;level-asymmetry-allowed=1;packetization-mode=1"
+                        // sdpFmtpLine: "profile-level-id=42e01f;level-asymmetry-allowed=1;packetization-mode=1"
                     },
                 ]);
             }
