@@ -19,29 +19,14 @@ function generateString(length) {
 
 let peerConfiguration = {
     iceServers: [
-        // {
-        //   urls: "stun:52.168.33.165",
-        // },
         {
-            urls: "turn:coturn-0.devcloud6.avasure.dev",
-            username: "1727103818:turn-user",
-            credential: "MJE2N78rSgzIK/KmavZPTEzpIso=",
+            urls: "turn:coturn-0.devcloud1.avasure.dev",
+            username: "1740067545:turn-user",
+            credential: "Yi79GaIsPMuMoqWudxZIxkwCP7o=",
         }
     ],
 }
 
-// let peerConfiguration = {
-//     iceServers: [
-//         {
-//           urls: "stun:fr-turn5-back.xirsys.com",
-//         },
-//         {
-//           urls: "turn:fr-turn5-back.xirsys.com:80?transport=udp",
-//           username: "G_J9DS17gBOk_XINL2WQv4Hs5UmsdewqXHfoYmgUVnAmD1kU_1Kfslto-S6iQuYmAAAAAGVWW_BWYWx5",
-//           credential: "ef45661c-84ab-11ee-bd9c-0242ac120004",
-//         }
-//     ],
-// }
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 document.getElementById("connect").addEventListener("submit", function (event) {
@@ -117,15 +102,10 @@ document.getElementById("call").addEventListener("click", async function () {
             if (transceiver.sender.track?.kind === 'audio') {
                 transceiver.setCodecPreferences([
                     {
-                        // Chrome
                         channels: 2,
                         clockRate: 48000,
                         mimeType: 'audio/opus',
-                        // Chrome
-                        sdpFmtpLine: 'minptime=10;useinbandfec=1',
-
-                        //FireFox
-                        // sdpFmtpLine: "maxplaybackrate=48000;stereo=1;useinbandfec=1"
+                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'minptime=10;useinbandfec=1' : "maxplaybackrate=48000;stereo=1;useinbandfec=1"
                     },
                 ]);
             }
@@ -134,11 +114,7 @@ document.getElementById("call").addEventListener("click", async function () {
                     {
                         mimeType: 'video/H264',
                         clockRate: 90000,
-                        // Chrome
-                        sdpFmtpLine: 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=64001f',
-
-                        // Firefox
-                        // sdpFmtpLine: "profile-level-id=42e01f;level-asymmetry-allowed=1;packetization-mode=1"
+                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=64001f' : "profile-level-id=42e01f;level-asymmetry-allowed=1"
                     },
                 ]);
             }
