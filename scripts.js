@@ -20,9 +20,9 @@ function generateString(length) {
 let peerConfiguration = {
     iceServers: [
         {
-            urls: "turn:coturn-0.devcloud1.avasure.dev",
-            username: "1740067545:turn-user",
-            credential: "Yi79GaIsPMuMoqWudxZIxkwCP7o=",
+            urls: "turn:coturn-0.devcloud2.avasure.dev",
+            username: "1740416883:turn-user",
+            credential: "s1y6uzTnDzJiefv09+D1m8Tb+ZY=",
         }
     ],
 }
@@ -217,4 +217,22 @@ document.getElementById("stop").addEventListener("click", async function () {
     document.getElementById("connectionState").textContent = "disconnected";
 
     console.log("call stopped");
+});
+
+document.getElementById("silent").addEventListener("click", async function () {
+    fetch(`https://${deviceIp}:8443/api/audio/mute`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+
+    console.log("silent mode enabled");
+});
+
+document.getElementById("normal").addEventListener("click", async function () {
+    fetch(`https://${deviceIp}:8443/api/audio/unmute`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+
+    console.log("normal mode enabled");
 });
