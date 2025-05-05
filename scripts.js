@@ -21,8 +21,8 @@ let peerConfiguration = {
     iceServers: [
         {
             urls: "turn:coturn-0.devcloud2.avasure.dev",
-            username: "1740416883:turn-user",
-            credential: "s1y6uzTnDzJiefv09+D1m8Tb+ZY=",
+            username: "1741458567:turn-user",
+            credential: "6WH54N/ylN4q5nmjnbZ4qSKOGLI=",
         }
     ],
 }
@@ -130,7 +130,8 @@ document.getElementById("call").addEventListener("click", async function () {
             while (peerConnection.currentRemoteDescription === null) {
                 console.log("waiting for remote description...");
                 await sleep(500);
-            }
+            } 
+            // console.log(candidate)
             socket.send(JSON.stringify({
                 "eventType": "ICE_CANDIDATE",
                 "data": {
@@ -139,7 +140,7 @@ document.getElementById("call").addEventListener("click", async function () {
                     "candidate": candidate.candidate
                 }
             }))
-            // console.log(candidate)
+            
         });
 
         peerConnection.addEventListener('track', e => {
