@@ -165,7 +165,8 @@ document.getElementById("call").addEventListener("click", async function () {
             "data": {
                 "sessionId": sessionId,
                 "type": "offer",
-                "sdp": offer.sdp
+                "sdp": offer.sdp,
+                "entryType": document.getElementById("entryType").value
             }
         }))
     } catch (err) {
