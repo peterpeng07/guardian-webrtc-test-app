@@ -20,9 +20,9 @@ function generateString(length) {
 let peerConfiguration = {
     iceServers: [
         {
-            urls: "turn:coturn-0.devcloud2.avasure.dev",
-            username: "1741458567:turn-user",
-            credential: "6WH54N/ylN4q5nmjnbZ4qSKOGLI=",
+            urls: "turn:coturn-0.cloud.sandbox.avasure.dev",
+            username: "1747659923:turn-user",
+            credential: "3S6HZqCVqVRE7uk1PTgWOtWho3Q=",
         }
     ],
 }
@@ -238,3 +238,84 @@ document.getElementById("normal").addEventListener("click", async function () {
 
     console.log("normal mode enabled");
 });
+
+
+const ptzStop = () => {
+fetch(`https://${deviceIp}:8443/api/audio/ptz-stop`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+}
+
+const upButton = document.getElementById("up")
+const downButton = document.getElementById("down")
+const leftButton = document.getElementById("left")
+const rightButton = document.getElementById("right")
+const inButton = document.getElementById("in")
+const outButton = document.getElementById("out")
+
+upButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-up`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+upButton.onmouseup = () => {
+    ptzStop();
+};
+
+downButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-down`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+downButton.onmouseup = () => {
+    ptzStop();
+};
+
+leftButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-left`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+leftButton.onmouseup = () => {
+    ptzStop();
+};
+
+rightButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-right`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+rightButton.onmouseup = () => {
+    ptzStop();
+};
+
+inButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-in`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+inButton.onmouseup = () => {
+    ptzStop();
+};
+
+outButton.onmousedown = () => {
+    fetch(`https://${deviceIp}:8443/api/audio/ptz-out`, {
+        method: "POST",
+        mode: 'no-cors'
+    }).catch((error) => console.log("error: " + error));
+};
+
+outButton.onmouseup = () => {
+    ptzStop();
+};
