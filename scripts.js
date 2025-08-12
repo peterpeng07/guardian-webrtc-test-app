@@ -114,7 +114,7 @@ document.getElementById("call").addEventListener("click", async function () {
                     {
                         mimeType: 'video/H264',
                         clockRate: 90000,
-                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=64001f' : "profile-level-id=42e01f;level-asymmetry-allowed=1"
+                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f' : "profile-level-id=42e01f;level-asymmetry-allowed=1"
                     },
                 ]);
             }
@@ -172,6 +172,9 @@ document.getElementById("call").addEventListener("click", async function () {
     } catch (err) {
         console.log("call error: " + err)
     }
+
+    // mute mic
+    localStream.getAudioTracks()[0].enabled = false;
 });
 
 
@@ -217,6 +220,7 @@ document.getElementById("stop").addEventListener("click", async function () {
     video.srcObject = null;
     document.getElementById("sessionId").textContent = ""
     document.getElementById("connectionState").textContent = "disconnected";
+    document.getElementById("mute").textContent = "Unmute";
 
     console.log("call stopped");
 });
