@@ -98,27 +98,27 @@ document.getElementById("call").addEventListener("click", async function () {
             peerConnection.addTrack(track, localStream);
         })
 
-        peerConnection.getTransceivers().forEach((transceiver) => {
-            if (transceiver.sender.track?.kind === 'audio') {
-                transceiver.setCodecPreferences([
-                    {
-                        channels: 2,
-                        clockRate: 48000,
-                        mimeType: 'audio/opus',
-                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'minptime=10;useinbandfec=1' : "maxplaybackrate=48000;stereo=1;useinbandfec=1"
-                    },
-                ]);
-            }
-            if (transceiver.sender.track?.kind === 'video') {
-                transceiver.setCodecPreferences([
-                    {
-                        mimeType: 'video/H264',
-                        clockRate: 90000,
-                        sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f' : "profile-level-id=42e01f;level-asymmetry-allowed=1"
-                    },
-                ]);
-            }
-        });
+        // peerConnection.getTransceivers().forEach((transceiver) => {
+        //     if (transceiver.sender.track?.kind === 'audio') {
+        //         transceiver.setCodecPreferences([
+        //             {
+        //                 channels: 2,
+        //                 clockRate: 48000,
+        //                 mimeType: 'audio/opus',
+        //                 sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'minptime=10;useinbandfec=1' : "maxplaybackrate=48000;stereo=1;useinbandfec=1"
+        //             },
+        //         ]);
+        //     }
+        //     if (transceiver.sender.track?.kind === 'video') {
+        //         transceiver.setCodecPreferences([
+        //             {
+        //                 mimeType: 'video/H264',
+        //                 clockRate: 90000,
+        //                 sdpFmtpLine: navigator.userAgent.includes("Chrome") ? 'level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f' : "profile-level-id=42e01f;level-asymmetry-allowed=1"
+        //             },
+        //         ]);
+        //     }
+        // });
 
 
         peerConnection.addEventListener("signalingstatechange", (event) => {
